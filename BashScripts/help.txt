@@ -1,0 +1,5 @@
+start iperf-logs
+./iperf-logs.sh <ip> <porta> <arquivo_log>
+
+start cpu-logs
+./cpu-logs.sh <arquivo_log>
