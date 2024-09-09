@@ -1,0 +1,7 @@
+start cpuId-logs
+	capture only one cpu
+./cpuId-logs.sh <arquivo_log> <cpuid>
+
+start cpu-logs
+	capture all cpus
+./cpu-logs.sh <arquivo_log> <cpuid>
