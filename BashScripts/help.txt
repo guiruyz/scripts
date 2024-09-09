@@ -1,2 +1,2 @@
 start iperf-logs
-./iperf-logs.sh <ip> <porta> <arquivo_log>
+./iperf-logs.sh <ip> <porta> <banda> <arquivo_log>
