@@ -5,3 +5,7 @@ start cpuId-logs
 start cpu-logs
 	capture all cpus
 ./cpu-logs.sh <arquivo_log> <cpuid>
+
+#cpuMonitor.sh
+```./monitor.sh <arquivo_csv> <cpu_id> <pid>```
+

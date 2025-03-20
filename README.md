@@ -14,3 +14,8 @@
 ```
 ./cpu-logs.sh <arquivo_log>
 ```
+##### cpuMonito 
+
+```
+./monitor.sh <arquivo_csv> <cpu_id> <pid>
+```

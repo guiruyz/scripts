@@ -1,2 +1,4 @@
 start iperf-logs
 ./iperf-logs.sh <ip> <porta> <banda> <arquivo_log>
+./iperf-logs.sh 172.250.237.210 6050 6000 iperf-3500Mb-1.log
+
