@@ -19,3 +19,5 @@
 ```
 ./monitor.sh <arquivo_csv> <cpu_id> <pid>
 ```
+## createTestBedEvent v3
+### Intended to create events in test bed agendas
