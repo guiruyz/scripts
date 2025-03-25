@@ -1,8 +1,8 @@
 // @ts-nocheck
 function createTestbedSchedule() {
-  const sheet = SpreadsheetApp.openByUrl("").getSheetByName('');
+  const sheet = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1SewM9TzsFPM8D3zJTgYSZeDKCYur96loRPuQIB27fjY/edit?resourcekey=&gid=374300266#gid=374300266").getSheetByName('Respostas ao formulário 1');
   var data = sheet.getDataRange().getValues();
-  const calendarID = "";
+  const calendarID = "c_8hlpomdmbh08tkgapu93rd2dsc@group.calendar.google.com";
   
   var i = ((data.length) - 1);
   var title = data[i][2];
@@ -44,9 +44,9 @@ function createTestbedSchedule() {
 
     var bw2 = data[b][7];
     
-    var ru2 = data[b][9];
+    var ru2 = data[b][6];
 
-    var rb2 = data[b][8];
+    var rb2 = data[b][9];
     
     var date1 = (data[i][12]);
 
@@ -72,15 +72,14 @@ function createTestbedSchedule() {
           console.log("Conflito em:"+ (b + 1));
           isConflict = true;
         }
-        else{
-          isConflict = false;
-        };
+        else{isConflict = false;};
       }
     }
   }
 
 
   // Caso se for uma demonstração
+  console.log("S:"+ startTime1 +" e:" +endTime1);
   if (demo == "Sim"){
     var description = `agendado por: ${wr}\nDesc.: ${demoDesc}`;
     if (isConflict) {
@@ -100,7 +99,7 @@ function createTestbedSchedule() {
 
     // Registrar na agenda 
     var description = `agendado por: ${wr}\nru: ${ru}\nbw: ${bw} \nradio base: ${rb}\ncore info: ${core} \nTerminal: ${ue}`;
-    if (isConflict) {
+    if (isConflict || startTime1 > endTime1) {
       sheet.getRange(i + 1, 16).setValue("não registrado");
       GmailApp.sendEmail(wr,"Falha ao registrar - Agenda TestBed", "verifique a disponibilidade na agenda ou tente novamente mais tarde =(")
     } 
@@ -108,6 +107,9 @@ function createTestbedSchedule() {
       var event = calendar.createEvent(title, startTime, endTime, {description: description, location: local});
       event.addGuest(wr);
       sheet.getRange(i + 1, 16).setValue("registrado");
+      if ((endTime1 - startTime1)> 9000) {
+        GmailApp.sendEmail(wr,"Atenção!! - Agenda Testbed", "Por favor, evite agendar mais que 2 horas e 30 minutos.")
+      }
       console.log(b + "\n sucesso!!")
       //GmailApp.sendEmail(wr,"Confirmação de registro - Agenda TestBed", "Registrado com sucesso na agenda =)");
     }
@@ -160,3 +162,4 @@ function verificarHorarioDisponivel(date, timeStart,timeEnd,title2,b,sheet) {
     return true;
   }
 }
+
