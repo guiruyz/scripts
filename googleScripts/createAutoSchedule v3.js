@@ -1,8 +1,8 @@
 // @ts-nocheck
 function createTestbedSchedule() {
-  const sheet = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1SewM9TzsFPM8D3zJTgYSZeDKCYur96loRPuQIB27fjY/edit?resourcekey=&gid=374300266#gid=374300266").getSheetByName('Respostas ao formulário 1');
+  const sheet = SpreadsheetApp.openByUrl("").getSheetByName('Respostas ao formulário 1');
   var data = sheet.getDataRange().getValues();
-  const calendarID = "c_8hlpomdmbh08tkgapu93rd2dsc@group.calendar.google.com";
+  const calendarID = "";
   
   var i = ((data.length) - 1);
   var title = data[i][2];
